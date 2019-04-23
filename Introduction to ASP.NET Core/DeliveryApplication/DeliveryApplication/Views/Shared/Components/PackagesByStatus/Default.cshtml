@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DeliveryApplication.ViewModels.PackageIndexViewModel>
+
+@{
+    ViewData["Title"] = "Default";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th >
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            @if (ViewData["action"]?.ToString().ToLower() == "delivered")
+            {
+                <td>
+                    <a asp-controller="Package" asp-action="Acquire" asp-route-id="@item.Id">Acquire</a> |
+                </td>
+            }
+            else
+            {
+                <td>
+                    <a asp-controller="Package" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>

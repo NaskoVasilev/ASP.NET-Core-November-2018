@@ -1,0 +1,59 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center">Edit Product</h1>
+<hr class="hr-2 bg-dark" />
+<form class="mx-auto half-width" method="post" asp-controller="Product" asp-action="Edit">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" placeholder="Name...">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" placeholder="Price...">
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea class="form-control" asp-for="Description" rows="4" placeholder="Description..."></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <h4 class="text-center">Product Type</h4>
+    <hr class="hr-2 bg-dark half-width mt-4" />
+    <div class="product-type-holder mt-4 d-flex justify-content-around">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" asp-for="Type" type="radio" value="Food">
+            <label class="form-check-label" for="inlineRadio1">Food</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" asp-for="Type" type="radio" value="Domestic">
+            <label class="form-check-label" for="inlineRadio2">Domestic</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" asp-for="Type" type="radio" value="Health">
+            <label class="form-check-label" for="inlineRadio3">Health</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" asp-for="Type" type="radio" value="Cosmetic">
+            <label class="form-check-label" for="inlineRadio4">Cosmetic</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" asp-for="Type" type="radio" value="Other">
+            <label class="form-check-label" for="inlineRadio5">Other</label>
+        </div>
+    </div>
+    <hr class="hr-2 bg-dark half-width mt-4"/>
+    <div class="button-holder mt-2 d-flex w-25 mx-auto justify-content-between">
+        <button type="submit" class="btn chushka-bg-color">Edit</button>
+        <a class="btn chushka-bg-color" asp-controller="Product" asp-action="Details" asp-route-id="@Model.Id">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

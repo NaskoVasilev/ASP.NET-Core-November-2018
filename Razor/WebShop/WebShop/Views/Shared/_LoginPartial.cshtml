@@ -1,0 +1,35 @@
+@using Microsoft.AspNetCore.Identity
+@using WebShop.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li>
+        <a class="nav-link nav-link-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+    </li>
+    <li>
+        <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+            <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
+        </form>
+    </li>
+    @if (this.User.IsInRole("Administrator"))
+    {
+        <li class="nav-item">
+            <a class="nav-link nav-link-white" asp-controller="Product" asp-action="Create">Create</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-white" asp-controller="Order" asp-action="All">All Orders</a>
+        </li>
+    }
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link nav-link-white" asp-controller="Account" asp-action="Login">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-link-white" asp-controller="Account" asp-action="Register">Register</a>
+    </li>
+}

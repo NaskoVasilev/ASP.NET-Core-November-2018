@@ -1,0 +1,51 @@
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+<ul class="navbar-nav">
+    <li class="nav-item">
+
+    </li>
+    <li class="nav-item">
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })"
+              method="post" id="logoutForm" class="navbar-right">
+            <button type="submit" class="nav-link avtive">Logout</button>
+        </form>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link nav-link-white active" asp-controller="Receipt" asp-action="UserReceipts">Receipts</a>
+    </li>
+    @if (this.User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link nav-link-white active" asp-controller="Package" asp-action="Create">Create</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-white active" asp-controller="Package" asp-action="Pending">Pending</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-white active" asp-controller="Package" asp-action="Shipped">Shipped</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-white active" asp-controller="Package" asp-action="Delivered">Delivered</a>
+        </li>
+    }
+</ul>
+}
+else
+{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link nav-link-white active" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-white active" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-link-white active" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+    </ul>
+}

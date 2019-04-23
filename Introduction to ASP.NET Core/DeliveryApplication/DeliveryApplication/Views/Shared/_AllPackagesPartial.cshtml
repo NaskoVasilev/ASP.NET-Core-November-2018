@@ -1,0 +1,56 @@
+@model IEnumerable<DeliveryApplication.ViewModels.PackageInfoViewModel>
+
+<h2>@ViewData["Title"]</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingAddress)
+            </th>
+            @if (ViewData["type"].ToString().ToLower() == "shipped")
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.EstimatedDeliveryDate)
+                </th>
+            }
+            <th>
+                @Html.DisplayNameFor(model => model.Recipient)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Weight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShippingAddress)
+                </td>
+                @if (ViewData["type"].ToString().ToLower() == "shipped")
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstimatedDeliveryDate)
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recipient)
+                </td>
+                <td>
+                    <a asp-action="@ViewData["Action"]" asp-route-id="@item.Id">@ViewData["Action"]</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
