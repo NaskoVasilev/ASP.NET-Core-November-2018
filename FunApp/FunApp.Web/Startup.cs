@@ -1,4 +1,5 @@
 ﻿using FunApp.Data;
+using FunApp.Data.Common;
 using FunApp.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,6 +53,10 @@ namespace FunApp.Web
             .AddDefaultUI();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //Application services
+            services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
