@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Eventures.ViewModels.Event.EventAllViewModel>
+
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1 class="text-center">All Events</h1>
+<hr class="hr-2 bg-dark" />
+<table class="table w-75 mx-auto table-hover">
+    <thead>
+        <tr class="row">
+            <th class="col-md-2">Name</th>
+            <th class="col-md-2">Start</th>
+            <th class="col-md-2">End</th>
+            <th class="col-md-4">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="row">
+                <td class="col-md-2">@item.Name</td>
+                <td class="col-md-2">@item.Start</td>
+                <td class="col-md-2">@item.End</td>
+                <td class="col-md-4">
+                    <form asp-controller="Order" asp-action="Create" method="post">
+                        <input type="hidden" name="EventId" value="@item.Id" />
+                        <label class="font-weight-bold">Tickets</label>
+                        <input type="number" name="TicketsCount" value="" />
+                        <input  class="btn-sm chushka-bg-color order-button" type="submit" value="Order" />
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Eventures.ViewModels.Event.UserEventViewModel>
+
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1 class="text-center">My Events</h1>
+<hr class="hr-2 bg-dark" />
+<table class="table w-75 mx-auto table-hover">
+    <thead>
+        <tr class="row">
+            <th class="col-md-3 font-weight-bold">Name</th>
+            <th class="col-md-3 font-weight-bold">Start</th>
+            <th class="col-md-3 font-weight-bold">End</th>
+            <th class="col-md-2 font-weight-bold">Tickets</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="row">
+                <td class="col-md-3">@item.Name</td>
+                <td class="col-md-3">@item.Start</td>
+                <td class="col-md-3">@item.End</td>
+                <td class="col-md-2">@item.Tickets</td>
+            </tr>
+        }
+    </tbody>
+</table>

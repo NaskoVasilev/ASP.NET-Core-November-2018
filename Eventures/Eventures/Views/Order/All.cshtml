@@ -1,0 +1,36 @@
+﻿@model Eventures.ViewModels.Order.OrderViewModel[]
+
+@{
+    ViewData["Title"] = "All Orders";
+}
+
+<h1 class="text-center">All Orders</h1>
+<hr class="chushka-bg-color w-75 hr-2" />
+<div class="container d-flex justify-content-center w-75">
+
+    <table class="table table-hover">
+        <thead>
+            <tr class="row">
+                <th class="col-md-1">#</th>
+                <th class="col-md-4">Event</th>
+                <th class="col-md-3">Customer</th>
+                <th class="col-md-4">Ordered On</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var index = 0; index < Model.Length; index++)
+            {
+                var currentEvent = Model[index];
+                var realIndex = index + 1;
+                <tr class="row">
+                    <th class="col-md-1">@realIndex</th>
+                    <td class="col-md-4">@currentEvent.Event</td>
+                    <td class="col-md-3">@currentEvent.Customer</td>
+                    <td class="col-md-4">@currentEvent.OrderedOn</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<hr class="chushka-bg-color w-75 hr-2" />
+
