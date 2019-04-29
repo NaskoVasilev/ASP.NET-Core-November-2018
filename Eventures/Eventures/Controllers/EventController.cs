@@ -7,6 +7,7 @@ using Eventures.Filters;
 using Microsoft.AspNetCore.Identity;
 using Eventures.Models;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Eventures.Controllers
 {
@@ -15,6 +16,7 @@ namespace Eventures.Controllers
         private readonly IEventService eventService;
         private readonly ILogger<EventController> logger;
         private readonly UserManager<User> userManager;
+        private const int PageSize = 6;
 
         public EventController(IEventService eventService, ILogger<EventController> logger, UserManager<User> userManager)
         {
@@ -45,18 +47,22 @@ namespace Eventures.Controllers
         }
 
         [Authorize]
-        public IActionResult All()
+        public IActionResult All(int? page)
         {
             EventAllViewModel[] events = eventService.All();
-            return View(events);
+            int pageNumber = page ?? 1;
+            var pagedEvents = events.ToPagedList(pageNumber, PageSize);
+            return View(pagedEvents);
         }
 
         [Authorize]
-        public IActionResult MyEvents()
+        public IActionResult MyEvents(int? page)
         {
             string userId = userManager.GetUserId(this.User);
             UserEventViewModel[] userEvents = eventService.UserEvents(userId);
-            return View(userEvents);
+            int pageNumber = page ?? 1;
+            var pagedEvents = userEvents.ToPagedList(pageNumber, PageSize);
+            return View(pagedEvents);
         }
     }
 }

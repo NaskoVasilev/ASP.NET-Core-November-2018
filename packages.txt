@@ -6,3 +6,5 @@ To use .NET Standart to extract there DbContext class
 	2. Set GenerateRuntimeConfigurationFiles to be true
 	3. Set the Web project as StartUp project
 			Note: This changes must happen in the .csproj file in the .Net Standart project
+			
+X.PagedList.Mvc.Core - Library for pagination

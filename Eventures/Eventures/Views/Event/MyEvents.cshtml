@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Eventures.ViewModels.Event.UserEventViewModel>
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@model IEnumerable<Eventures.ViewModels.Event.UserEventViewModel>
 
 @{
     ViewData["Title"] = "All";
@@ -27,3 +30,6 @@
         }
     </tbody>
 </table>
+<div class="pagination">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("MyEvents", new { page }))
+</div>

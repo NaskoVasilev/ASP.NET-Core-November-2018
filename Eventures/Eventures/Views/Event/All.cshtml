@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Eventures.ViewModels.Event.EventAllViewModel>
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList; 
+
+@model IEnumerable<Eventures.ViewModels.Event.EventAllViewModel>
 
 @{
     ViewData["Title"] = "All";
@@ -27,10 +30,14 @@
                         <input type="hidden" name="EventId" value="@item.Id" />
                         <label class="font-weight-bold">Tickets</label>
                         <input type="number" name="TicketsCount" value="" />
-                        <input  class="btn-sm chushka-bg-color order-button" type="submit" value="Order" />
+                        <input class="btn-sm chushka-bg-color order-button" type="submit" value="Order" />
                     </form>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<div class="pagination">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("All", new { page }))
+</div>

@@ -56,3 +56,11 @@ footer {
 .w-85{
     width: 85%;
 }
+
+.pagination{
+    margin-bottom: 30px;
+}
+
+.pagination div{
+   margin: 0 auto;
+}

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using X.PagedList;
 
 namespace Eventures.Controllers
 {
@@ -12,6 +13,7 @@ namespace Eventures.Controllers
     {
         private readonly IOrderService service;
         private readonly UserManager<User> userManager;
+        private const int PageSize = 6;
 
         public OrderController(IOrderService service, UserManager<User> manager)
         {
@@ -39,10 +41,12 @@ namespace Eventures.Controllers
         }
 
         [Authorize(Roles = "Administrator")]
-        public IActionResult All()
+        public IActionResult All(int? page)
         {
             OrderViewModel[] orders = service.All();
-            return View(orders);
+            int pageNumber = page ?? 1;
+            var pagedOrders = orders.ToPagedList(pageNumber, PageSize);
+            return View(pagedOrders);
         }
     }
 }
