@@ -1,19 +1,21 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Eventures.Areas.Services;
+using Eventures.Areas.Services.Contracts;
+using Eventures.Data;
+using Eventures.MappingConfiguration;
+using Eventures.Middlewares;
+using Eventures.Models;
+using Eventures.Services;
+using Eventures.Services.Contracts;
+using Eventures.Utilites;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Eventures.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Eventures.Models;
-using Eventures.Utilites;
-using AutoMapper;
-using Eventures.MappingConfiguration;
-using Eventures.Services.Contracts;
-using Eventures.Services;
-using Eventures.Middlewares;
 using Microsoft.Extensions.Logging;
 
 namespace Eventures
@@ -55,7 +57,7 @@ namespace Eventures
             //Configure AutoMapper
             services.AddAutoMapper(opt => opt.AddProfile<EventuresProfile>());
 
-            services.AddLogging(opt => 
+            services.AddLogging(opt =>
             {
                 opt.AddConsole();
                 opt.AddDebug();
@@ -73,6 +75,7 @@ namespace Eventures
             //Add services
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IAdministrationService, AdministrationService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -101,8 +104,13 @@ namespace Eventures
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                   name: "areas",
+                   template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                 );
+
+                routes.MapRoute(
+                  name: "default",
+                  template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

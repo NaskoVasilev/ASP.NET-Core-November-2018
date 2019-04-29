@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AdminstrationUserViewModel>
+
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1 class="text-center">All Users</h1>
+<hr class="hr-2 bg-dark" />
+<table class="table w-75 mx-auto table-hover">
+    <thead>
+        <tr class="row">
+            <th class="col-md-2">Username</th>
+            <th class="col-md-2">First Name</th>
+            <th class="col-md-2">Last Name</th>
+            <th class="col-md-2">Email</th>
+            <th class="col-md-3">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr class="row">
+                <td class="col-md-2">@user.UserName</td>
+                <td class="col-md-2">@user.FirstName</td>
+                <td class="col-md-2">@user.LastName</td>
+                <td class="col-md-2">@user.Email</td>
+                <td class="col-md-4 text-center">
+                    @if (user.IsAdmin)
+                    {
+                        <a class="btn chushka-bg-color" asp-area="Administration" asp-controller="Administrator" asp-action="Demote" asp-route-username="@user.UserName">Demote</a>
+                    }
+                    else
+                    {
+                        <a class="btn chushka-bg-color" asp-area="Administration" asp-controller="Administrator" asp-action="Promote" asp-route-username="@user.UserName">Promote</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

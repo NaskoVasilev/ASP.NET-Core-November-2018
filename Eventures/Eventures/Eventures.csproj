@@ -20,6 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Areas\Administration\Views\_ViewImports.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Administration\Views\_ViewStart.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Account\Register.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -32,6 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Identity\Services\" />
   </ItemGroup>
 
