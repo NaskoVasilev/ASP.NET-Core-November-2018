@@ -1,5 +1,4 @@
-﻿@using FunApp.Web.Models.Joke
-@model JokeIndexViewModel[]
+﻿@model IEnumerable<JokeViewModel>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -13,10 +12,11 @@
         <div class="col-md-12 clearfix">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    @joke.Content
+                    @Html.Raw(joke.HtmlContent)
                 </div>
                 <div class="panel-footer">
                     @joke.CategoryName
+                    <a asp-controller="Joke" asp-action="Details" asp-route-id="@joke.Id">View</a>
                 </div>
             </div>
         </div>

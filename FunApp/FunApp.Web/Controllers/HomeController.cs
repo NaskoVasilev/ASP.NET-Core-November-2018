@@ -1,37 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FunApp.Web.Models;
-using FunApp.Web.Models.Joke;
-using FunApp.Data.Common;
-using FunApp.Data.Models;
+using FunApp.Services.DataServices.Contracts;
 
 namespace FunApp.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IRepository<Joke> jokeRepository;
+        private const int HomePageJokesCount = 20;
+        private readonly IJokesService jokesService;
 
-        public HomeController(IRepository<Joke> jokeRepository)
+        public HomeController(IJokesService jokesService)
         {
-            this.jokeRepository = jokeRepository;
+            this.jokesService = jokesService;
         }
 
         public IActionResult Index()
         {
-            var jokes = jokeRepository.All()
-                .OrderBy(x => Guid.NewGuid())
-                .Select(j => new JokeIndexViewModel
-                {
-                    Content = j.Content,
-                    CategoryName = j.Category.Name
-                })
-                .Take(10)
-                .ToArray();
-
+            var jokes = jokesService.GetRandomJokes(HomePageJokesCount);
             return View(jokes);
         }
 

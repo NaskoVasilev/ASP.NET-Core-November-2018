@@ -1,0 +1,17 @@
+﻿@model JokeViewModel
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2 class="text-center">Joke Details</h2>
+<div class="col-md-12 clearfix">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @Html.Raw(Model.HtmlContent)
+        </div>
+        <div class="panel-footer">
+            @Model.CategoryName
+        </div>
+    </div>
+</div>
+
