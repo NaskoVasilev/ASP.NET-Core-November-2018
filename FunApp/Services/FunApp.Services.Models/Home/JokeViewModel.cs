@@ -14,6 +14,10 @@ namespace FunApp.Services.Models.Home
 
         public string CategoryName { get; set; }
 
+        public int CategoryId { get; set; }
+
+        public double Rating { get; set; }
+
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             //configuration.CreateMap<Joke, JokeViewModel>()

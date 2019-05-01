@@ -19,11 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandBox", "Tests\SandBox\Sa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C37C76D5-0756-40EE-AE70-B521B26B51E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunApp.Services.DataServices", "Services\FunApp.Services.DataServices\FunApp.Services.DataServices.csproj", "{6AE69FA2-7609-4300-8751-1FB3765FC594}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunApp.Services.DataServices", "Services\FunApp.Services.DataServices\FunApp.Services.DataServices.csproj", "{6AE69FA2-7609-4300-8751-1FB3765FC594}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunApp.Services.Models", "Services\FunApp.Services.Models\FunApp.Services.Models.csproj", "{FEDC3036-B473-418F-8007-AFCDE74657A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunApp.Services.Models", "Services\FunApp.Services.Models\FunApp.Services.Models.csproj", "{FEDC3036-B473-418F-8007-AFCDE74657A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunApp.Services.Mapping", "Services\FunApp.Services.Mapping\FunApp.Services.Mapping.csproj", "{34154F90-3C1E-4690-9632-F6FB77A9E158}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunApp.Services.Mapping", "Services\FunApp.Services.Mapping\FunApp.Services.Mapping.csproj", "{34154F90-3C1E-4690-9632-F6FB77A9E158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunApp.Services.MachineLearning", "Services\FunApp.Services.MachineLearning\FunApp.Services.MachineLearning.csproj", "{7A8E2B52-3DB2-4A44-AFAE-1CE2DC982B86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{34154F90-3C1E-4690-9632-F6FB77A9E158}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34154F90-3C1E-4690-9632-F6FB77A9E158}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34154F90-3C1E-4690-9632-F6FB77A9E158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A8E2B52-3DB2-4A44-AFAE-1CE2DC982B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A8E2B52-3DB2-4A44-AFAE-1CE2DC982B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A8E2B52-3DB2-4A44-AFAE-1CE2DC982B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A8E2B52-3DB2-4A44-AFAE-1CE2DC982B86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{6AE69FA2-7609-4300-8751-1FB3765FC594} = {C37C76D5-0756-40EE-AE70-B521B26B51E2}
 		{FEDC3036-B473-418F-8007-AFCDE74657A3} = {C37C76D5-0756-40EE-AE70-B521B26B51E2}
 		{34154F90-3C1E-4690-9632-F6FB77A9E158} = {C37C76D5-0756-40EE-AE70-B521B26B51E2}
+		{7A8E2B52-3DB2-4A44-AFAE-1CE2DC982B86} = {C37C76D5-0756-40EE-AE70-B521B26B51E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0381CAAB-41C7-46E3-8DB3-B11BEFE16DF7}

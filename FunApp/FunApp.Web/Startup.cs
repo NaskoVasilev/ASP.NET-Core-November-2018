@@ -3,8 +3,10 @@ using FunApp.Data.Common;
 using FunApp.Data.Models;
 using FunApp.Services.DataServices;
 using FunApp.Services.DataServices.Contracts;
+using FunApp.Services.MachineLearning;
 using FunApp.Services.Mapping;
 using FunApp.Services.Models.Home;
+using FunApp.Web.Models.Jokes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,7 +30,7 @@ namespace FunApp.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            AutoMapperConfig.RegisterMappings(typeof(JokeViewModel).Assembly);
+            AutoMapperConfig.RegisterMappings(typeof(JokeViewModel).Assembly, typeof(CreateJokeInputModel).Assembly);
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -58,6 +60,8 @@ namespace FunApp.Web
             //Application services
             services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
             services.AddScoped<IJokesService, JokesServices>();
+            services.AddScoped<ICategoriesService, CategoriesService>();
+            services.AddScoped<IJokesCategorizer, JokesCategorizer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

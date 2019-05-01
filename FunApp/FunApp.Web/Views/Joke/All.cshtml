@@ -1,0 +1,30 @@
+﻿@using X.PagedList.Mvc.Core; 
+@using X.PagedList;
+
+@model IEnumerable<JokeViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="row">
+    @foreach (var joke in Model)
+    {
+    <div class="col-md-12 clearfix">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @Html.Raw(joke.HtmlContent)
+            </div>
+            <div class="panel-footer">
+                @joke.CategoryName
+                <a asp-controller="Joke" asp-action="Details" asp-route-id="@joke.Id">View</a>
+                <a asp-controller="Joke" asp-action="ByCategory" asp-route-categoryId="@joke.CategoryId">More jokes</a>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+@Html.PagedListPager( (IPagedList)Model, page => Url.Action("All", new { page }) )

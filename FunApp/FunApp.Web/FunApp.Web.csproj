@@ -9,14 +9,31 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="7.6.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Data\FunApp.Data.Models\FunApp.Data.Models.csproj" />
     <ProjectReference Include="..\FunApp.Data\FunApp.Data.csproj" />
     <ProjectReference Include="..\Services\FunApp.Services.DataServices\FunApp.Services.DataServices.csproj" />
+    <ProjectReference Include="..\Services\FunApp.Services.MachineLearning\FunApp.Services.MachineLearning.csproj" />
     <ProjectReference Include="..\Services\FunApp.Services.Mapping\FunApp.Services.Mapping.csproj" />
     <ProjectReference Include="..\Services\FunApp.Services.Models\FunApp.Services.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Joke\All.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Joke\ByCategory.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="MlModels\JokesCategoryModel.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

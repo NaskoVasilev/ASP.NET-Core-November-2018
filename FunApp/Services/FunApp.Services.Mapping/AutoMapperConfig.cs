@@ -116,7 +116,7 @@ namespace FunApp.Services.Mapping
         private static IEnumerable<IHaveCustomMappings> GetCustomMappings(IEnumerable<Type> types)
         {
             var maps = types
-                .Where(t => !t.IsAbstract && t.IsInterface && typeof(IHaveCustomMappings).IsAssignableFrom(t))
+                .Where(t => !t.IsAbstract && !t.IsInterface && typeof(IHaveCustomMappings).IsAssignableFrom(t))
                 .Select(t => (IHaveCustomMappings)Activator.CreateInstance(t))
                 .ToArray();
 

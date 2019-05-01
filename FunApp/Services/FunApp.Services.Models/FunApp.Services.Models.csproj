@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Jokes\" />
-    <Folder Include="Categories\" />
   </ItemGroup>
 
   <ItemGroup>
