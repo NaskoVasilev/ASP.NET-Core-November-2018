@@ -6,6 +6,7 @@ using FunApp.Services.Models.Categories;
 using FunApp.Services.Models.Home;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FunApp.Services.DataServices
 {
@@ -18,6 +19,22 @@ namespace FunApp.Services.DataServices
             this.categoryRepository = categoryRepository;
         }
 
+        public async Task Create(string name)
+        {
+            await this.categoryRepository.AddAsync(new Category() { Name = name });
+            await categoryRepository.SaveChangesAsync();
+        }
+
+        public async Task Edit(string name, int id)
+        {
+            Category category = this.GetById(id);
+            if(category != null)
+            {
+                category.Name = name;
+                await categoryRepository.SaveChangesAsync();
+            }
+        }
+
         public CategoryByNameAndIdViewModel[] GetAll()
         {
             var categories = categoryRepository.All()
@@ -26,6 +43,11 @@ namespace FunApp.Services.DataServices
                 .ToArray();
 
             return categories;
+        }
+
+        public Category GetById(int id)
+        {
+            return this.categoryRepository.All().FirstOrDefault(x => x.Id == id);
         }
 
         public int? GetGategoryId(string category)

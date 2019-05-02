@@ -1,4 +1,6 @@
-﻿using FunApp.Services.Models.Categories;
+﻿using FunApp.Data.Models;
+using FunApp.Services.Models.Categories;
+using System.Threading.Tasks;
 
 namespace FunApp.Services.DataServices.Contracts
 {
@@ -9,5 +11,11 @@ namespace FunApp.Services.DataServices.Contracts
         bool IsCategoryIdValid(int id);
 
         int? GetGategoryId(string category);
+
+        Task Create(string name);
+
+        Task Edit(string name, int id);
+
+        Category GetById(int id);
     }
 }

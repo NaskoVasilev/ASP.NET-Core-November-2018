@@ -1,0 +1,21 @@
+﻿@page
+@model FunApp.Web.Pages.Categories.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create Category</h2>
+<form method="post">
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Input.Name"></label>
+        <input asp-for="Input.Name" class="form-control" />
+        <span asp-validation-for="Input.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Create</button>
+    </div>
+</form>
+

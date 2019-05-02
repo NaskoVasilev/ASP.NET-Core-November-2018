@@ -27,4 +27,4 @@
     }
 </div>
 
-@Html.PagedListPager( (IPagedList)Model, page => Url.Action("All", new { page }) )
+@Html.PagedListPager((IPagedList)Model, page => $"/Joke/All/?page={page}")

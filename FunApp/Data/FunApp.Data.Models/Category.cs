@@ -1,4 +1,5 @@
 ﻿using FunApp.Data.Common;
+using System;
 using System.Collections.Generic;
 
 namespace FunApp.Data.Models

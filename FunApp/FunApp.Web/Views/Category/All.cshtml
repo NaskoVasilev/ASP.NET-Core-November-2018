@@ -37,11 +37,17 @@
                     @Html.DisplayFor(modelItem => item.CountOfAllJokes)
                 </td>
                 <td>
+                    @Url.Action("All", "Category", new { area = "", page = 5 })
                     <a asp-controller="Joke" asp-action="ByCategory" asp-route-categoryId="@item.Id">More jokes</a>
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <a asp-page="/Categories/Edit" asp-route-id="@item.Id">Edit</a>
+                        @Url.Action("All", "Category", new { area = "", page = 5 })
+                    }
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-@Html.PagedListPager((IPagedList)Model, page => Url.Action("All", new { page }))
+@Html.PagedListPager((IPagedList)Model, page => $"/Category/All/?page={page}")

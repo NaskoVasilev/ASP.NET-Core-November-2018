@@ -26,4 +26,4 @@
     }
 </div>
 
-@Html.PagedListPager( (IPagedList)Model, page => Url.Action("ByCategory", new {Model.First().CategoryId, page }) )
+@Html.PagedListPager((IPagedList)Model, page => $"/Joke/ByCategory/?page={page}&categoryId={Model.First().CategoryId}");
