@@ -21,10 +21,10 @@ namespace Eventures.Services
             this.mapper = mapper;
         }
 
-        public void Add(EventViewModel product)
+        public void Add(EventViewModel @event)
         {
-            Event validProduct = mapper.Map<Event>(product);
-            context.Events.Add(validProduct);
+            Event validEvent = mapper.Map<Event>(@event);
+            context.Events.Add(validEvent);
             context.SaveChanges();
         }
 
