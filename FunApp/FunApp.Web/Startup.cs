@@ -55,7 +55,7 @@ namespace FunApp.Web
             .AddDefaultTokenProviders()
             .AddDefaultUI();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //Application services
             services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
