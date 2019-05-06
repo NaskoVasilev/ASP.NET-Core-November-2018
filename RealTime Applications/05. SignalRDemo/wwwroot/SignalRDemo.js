@@ -18,7 +18,7 @@ setupConnection = () => {
     });
 
     connection.on("finished", function () {
-        // connection.stop();
+        connection.stop();
     });
 
     connection.start()
