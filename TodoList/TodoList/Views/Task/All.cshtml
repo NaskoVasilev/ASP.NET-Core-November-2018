@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TaskViewModel>
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1>These are your future tasks!</h1>
+<table class="table w-100" id="tasks">
+    <thead>
+        <tr class="row">
+            <th class="col-md-6">Content</th>
+            <th class="col-md-2">Strat Date</th>
+            <th class="col-md-2">End Date</th>
+            <th class="col-md-2">Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr class="row">
+                <td class="col-md-6">
+                    <input type="text" name="Content" id=@("content" + task.Id) value="@task.Content" />
+                </td>
+                <td class="col-md-2">@task.StratDate.ToString("dd.MM.yyyy")</td>
+                <td class="col-md-2">
+                    <input type="date" name="EndDate" id=@("endDate" + task.Id) value="@task.EndDate.ToString("yyyy-MM-dd")" />
+                </td>
+                <td class="col-md-2">
+                    <button class="btn btn-primary edit" data-id="@task.Id"> Edit</button>
+                    <button class="btn btn-danger delete" data-id="@task.Id">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr id="create" class="row">
+            <td class="col-md-6">
+                <input type="text" name="Content" id="contentAdd" value="" placeholder="Content..." />
+            </td>
+            <td class="col-md-2">
+                @DateTime.Now.ToLongDateString()
+            </td>
+            <td class="col-md-2">
+                <input type="date" name="EndDate" id="endDateAdd" value="" />
+            </td>
+            <td class="col-md-2">
+                <button class="btn btn-primary" id="add">Add</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+
